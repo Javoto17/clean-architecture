@@ -1,9 +1,18 @@
 import { test } from "vitest";
 import { render, screen } from "@testing-library/react";
-import App from "../../App";
+import { AppProvider } from "../../context/AppProvider";
+import { ProductsPage } from "../ProductsPage";
+
+const wrapper = ({ children }: { children: React.ReactNode }) => {
+    return <AppProvider>{children}</AppProvider>;
+};
+
+const renderComponent = () => {
+    return render(<ProductsPage />, { wrapper });
+};
 
 test("Loads and displays title", async () => {
-    render(<App />);
+    renderComponent();
 
     screen.getByRole("heading", { name: "Product price updater" });
 });
