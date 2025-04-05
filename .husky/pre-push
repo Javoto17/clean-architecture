@@ -1,1 +1,1 @@
-npm test
+yarn prettify && yarn lint && yarn test
